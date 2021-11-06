@@ -1,0 +1,10 @@
+{
+	"token": {
+		"maxAge": 1209600000,
+		"size": 48,
+		"encoding": "base64url"
+	},
+	"hcaptcha": {
+		"secret": "0xb98061d8CE8830bc2B90049D4458109bbB65d60E"
+	}
+}
