@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve --open src/frontend/main.js",
     "build": "vue-cli-service build --dest bin/www --modern --no-clean src/frontend/main.js",
-    "lint": "vue-cli-service lint src/frontend/main.js"
+    "lint": "vue-cli-service lint src/frontend/main.js",
+    "start": "node bin/index.js"
   },
   "dependencies": {
     "body-parser": "^1.19.0",

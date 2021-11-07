@@ -95,7 +95,7 @@ export default {
   @media only screen and (max-device-width: 850px)
     #toggleMenu:not(:checked) ~ .title h1,
     #toggleMenu:not(:checked) ~ .tabs h2
-      display:none
+      display: none
 
   @media only screen and (min-device-width: 850px)
     #toggleMenu:checked
