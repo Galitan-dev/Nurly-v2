@@ -1,4 +1,4 @@
 import { createApp } from 'vue'
-import App from './App.vue'
+import Sidebar from './Sidebar.vue'
 
-createApp(App).mount('#app')
+createApp(Sidebar).mount('#sidebar')
