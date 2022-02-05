@@ -7,20 +7,20 @@
     </label>
   </div>
   <div class="tabs">
-    <SidebarTab name="home" displayName="Accueil" iconName="estate"></SidebarTab>
+    <SidebarSelector></SidebarSelector>
+    <SidebarTab name="board" displayName="Dashboard" iconName="estate"></SidebarTab>
     <SidebarTab name="shorts" displayName="Mes Raccourcies" iconName="cube"></SidebarTab>
     <SidebarTab name="visits" displayName="Visites" iconName="eye"></SidebarTab>
     <SidebarTab name="settings" displayName="Paramètres" iconName="setting"></SidebarTab>
     <SidebarTab name="help" displayName="Aide" iconName="comment-question"></SidebarTab>
     <SidebarLogoutTab displayName="Se Déconnecter" iconName="signout"></SidebarLogoutTab>
-    <SidebarSelector :position="selectorPosition"></SidebarSelector>
   </div>
 </template>
   
 <script>
-import SidebarTab from './components/SidebarTab'
-import SidebarLogoutTab from './components/SidebarLogoutTab'
-import SidebarSelector from './components/SidebarSelector'
+import SidebarTab from './components/sidebar/SidebarTab'
+import SidebarLogoutTab from './components/sidebar/SidebarLogoutTab'
+import SidebarSelector from './components/sidebar/SidebarSelector'
 
 export default {
   name: 'Sidebar',
@@ -28,32 +28,6 @@ export default {
     SidebarTab,
     SidebarLogoutTab,
     SidebarSelector
-  },
-  data: function () {
-
-    return {
-      selectorPosition: 0,
-      activeTab: {
-        name: 'home',
-        position: 0
-      }
-    }
-  },
-  methods: {
-    setActiveTab: function(name, position) {
-      this.activeTab = {
-        name,
-        position
-      };
-
-      this.selectorPosition = position;
-    },
-    focus: function(position) {
-      this.selectorPosition = position;
-    },
-    unfocus: function() {
-      this.selectorPosition = this.activeTab.position;
-    }
   }
 }
 </script>
@@ -63,17 +37,18 @@ export default {
   @import "./assets/sass/main.sass"
 
   #sidebar
-    background: var(--primary-background)
-    position: fixed
-    top: 0
-    bottom: 0
+    position: sticky
+    background: var(--dark-blue)
+    height: 100vh
+    width: max-content
     padding: 20px
-    color: var(--primary-color)
+    color: var(--light-blue)
     display: flex
     flex-direction: column
     align-items: center
 
     .title
+      height: 4em
       label
         text-align: center
         margin-bottom: 30px
@@ -82,9 +57,9 @@ export default {
       i
         font-size: 3em
         cursor: pointer
-      h1
-        font-size: 3em
+      h1    
         margin: 0 10px
+        font-size: 3em
         text-transform: uppercase
         font-family: "Stick No Bills"
         cursor: pointer
@@ -93,18 +68,20 @@ export default {
       display: none
 
   @media only screen and (max-device-width: 850px)
-    #toggleMenu:not(:checked) ~ .title h1,
-    #toggleMenu:not(:checked) ~ .tabs h2
-      display: none
+    #toggleMenu:not(:checked) ~ .title,
+    #toggleMenu:not(:checked) ~ .tabs .tab
+      overflow: hidden
+      width: 1em
 
   @media only screen and (min-device-width: 850px)
     #toggleMenu:checked
-      ~ .title h1
-        display: none
+      ~ .title 
+        h1
+          display: none
 
       ~ .tabs
         h2
           display: none
-        .selector
-          width: 122%
+        .selector .right
+          right: 24px
 </style>

@@ -1,33 +1,26 @@
 <template>
-    <div v-on:click="logout" v-on:mouseenter="mouseIn" v-on:mouseleave="mouseOut" class="tab logout">
+    <div v-on:click="click" class="tab logout">
         <i v-bind:class="'uil uil-' + iconName"></i>
-        <h2>{{ displayName }}</h2>
+        <h2>{{ $getPage(this.name).displayName }}</h2>
     </div>
 </template>
 
 <script>
     export default {
         name: 'SidebarLogoutTab',
+        data () {
+            return {
+                name: "authentication"
+            }
+        },
         props: {
             iconName: {
-                type: String
-            },
-            displayName: {
                 type: String
             }
         },
         methods: {
-            logout: function () {
+            click: function () {
                 alert('Logout !');
-            },
-            mouseIn: function() {
-                this.$parent.focus(this.getPosition());
-            },
-            mouseOut: function() {
-                this.$parent.unfocus();
-            },
-            getPosition: function() {
-                return Array.from(this.$el.parentNode.children).indexOf(this.$el);
             }
         }
     }
@@ -38,7 +31,7 @@
         padding: .4em 0
         cursor: pointer-
         text-decoration: none
-        color: var(--primary-color)
+        color: var(--baby-blue-eyes)
         display: flex
         align-items: center
         i
